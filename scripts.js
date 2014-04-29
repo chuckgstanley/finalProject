@@ -1,6 +1,6 @@
 function fullData(wageData3){
 	var displayDataHeader3 = wageData3.columns;
-	console.log(displayDataHeader3);
+	console.log(wageData3);
 	
 	//insert data table template from fusion tables
 	//replace default data with unemployment.rows data
@@ -9,21 +9,21 @@ function fullData(wageData3){
 	table3.addColumn('string', displayDataHeader3[0]);
 	table3.addColumn('number', displayDataHeader3[1]);
 	table3.addColumn('number', displayDataHeader3[2]);
-	table3.addColumn('number', displayDataHeader3[3]);
-	table3.addColumn('number', displayDataHeader3[4]);
-	table3.addColumn('number', displayDataHeader3[5]);
-	table3.addRows(wageData3.rows);                
-	
+	table3.addRows(wageData3.rows)
+	//add formatters
 var options = {
 	title : 'TITLE',	
 	fontName: 'Times New Roman',
-	colors:['#003900', '#D9D933', '#175B72', '#990000', '#DE53C2'],
+	colors:['#003900'],
 	backgroundColor: { strokeWidth:10, stroke: 'black'},
 	legend: {position: 'right', textStyle: {fontSize: 8}}
 	
 }
-	
-
+ var formatter = new google.visualization.NumberFormat(
+      {prefix: "$", negativeColor: 'red', negativeParens: true});
+	formatter.format(table3, 1);
+	formatter.format(table3, 2); // Apply formatter to second column
+	console.log(table3);
 	// Draw the linegraph in html div "graph div"
 
 	var wageGraph3 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
@@ -233,7 +233,7 @@ function chartLoaded() {
 
 	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1fktE4abpAfHJzeXzKmOyWUY-ll1yJTtffYH5eoNK&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", workforceSex, "json");
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year,Top5, Top20+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
 	
 	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsAge, "json");
 
