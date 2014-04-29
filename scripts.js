@@ -26,7 +26,7 @@ var options = {
 
 	// Draw the linegraph in html div "graph div"
 
-	var wageGraph3 = new google.visualization.LineChart(document.getElementById("wageGraphDiv3"));
+	var wageGraph3 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
 	wageGraph3.draw(table3, options)
 	
 	
@@ -40,7 +40,7 @@ var options = {
 
 
    
-function infoLoaded(wageData2){
+/*function infoLoaded(wageData2){
 	var displayDataHeader2 = wageData2.columns;
 	console.log(displayDataHeader2);
 	
@@ -106,8 +106,8 @@ function jsonLoaded(wageData) {
 	
 
 };//end of jsonLoaded function
-
-function minWageDemogs(){
+*/
+function wageDemogsAge(){
 //source:http://www.bls.gov/cps/minwage2013.pdf obtained 4/29
 var minWageAge = google.visualization.arrayToDataTable([
 	['Age', 'Minimum Wage Earners'],
@@ -116,38 +116,131 @@ var minWageAge = google.visualization.arrayToDataTable([
 	['25 and over', 1638]
 	
 ]);
+
+
+var ageChart = new google.visualization.PieChart(document.getElementById("ageDiv"));
+        ageChart.draw(minWageAge, ageChartOptions);
+      }
+var ageChartOptions = {
+	title: 'Minimum Wage Earners by Age',
+	fontName: 'Times New Roman',
+	colors:['#2B492B', '#003900', '#D9D933'],
+	pieHole: 0.4,
+	
+};
+function wageDemogsSex(){
 var minWageSex = google.visualization.arrayToDataTable([
 	['Sex', 'Minimum Wage Earners'],
+	['Men', 1243],
+	['Women', 2058]
 	
-	
-])
+]);
 
- var ageChart = new google.visualization.PieChart(document.getElementById('wageGraphdiv4'));
-        ageChart.draw(minWageAge, options);
+var sexChart = new google.visualization.PieChart(document.getElementById('wageGraphDiv'));
+        sexChart.draw(minWageSex, sexChartOptions);
       }
-var options = {
-	title: 'Minimum Wage Earners by Age',
-	colors:['#003900', '#D9D933', '#175B72'],
+var sexChartOptions = {
+	title: 'Minimum Wage Earners by Gender',
+	fontName: 'Times New Roman',
+	colors:['#003900', '#D9D933'],
 	pieHole: 0.4,
 	
 };
 
+function workforceSex(){
+var fullWorkforceSex = google.visualization.arrayToDataTable([
+	['Sex', 'In Workforce'],
+	['Men', 37544],
+	['Women', 38404]
+	
+]);
 
+var workforceSexChart = new google.visualization.PieChart(document.getElementById('wageGraphDiv2'));
+        workforceSexChart.draw(fullWorkforceSex, workforceSexChartOptions);
+      }
+var workforceSexChartOptions = {
+	title: 'U.S. Workforce by Gender',
+	fontName: 'Times New Roman',
+	colors:['#003900', '#D9D933'],
+	pieHole: 0.4,
+	
+};
+function wageDemogsRace(){
+var minWageRace = google.visualization.arrayToDataTable([
+		['Race', 'Minimum Wage Earners'],
+		['White', 2554],
+		['Black', 500],
+		['Asian', 114],
+		['Latino', 643]
+	
+]);
+
+var minWageRaceChart = new google.visualization.PieChart(document.getElementById("raceDiv"));
+        minWageRaceChart.draw(minWageRace, minWageRaceChartOptions);
+      }
+var minWageRaceChartOptions = {
+	title: 'Minimum Wage Earners by Race',
+	fontName: 'Times New Roman',
+	colors:['#003900', '#D9D933', '#175B72', '#990000'],
+	pieHole: 0.4,
+	
+};
+
+function workforceDemogsRace(){
+var fullWorkforceRace = google.visualization.arrayToDataTable([
+		['Race', 'U.S. Workforce by Race'],
+		['White', 59515],
+		['Black', 10233],
+		['Asian', 3495],
+		['Latino', 14706]
+		]);
+
+var fullWorkforceRaceChart = new google.visualization.PieChart(document.getElementById("moreRaceDiv"));
+       fullWorkforceRaceChart.draw(fullWorkforceRace, fullWorkforceRaceChartOptions);
+      }
+var fullWorkforceRaceChartOptions = {
+	title: 'U.S. Workforce by Race',
+	fontName: 'Times New Roman',
+	colors:['#003900', '#D9D933', '#175B72', '#990000'],
+	pieHole: 0.4,
+	
+};
+
+function wageDemogsHours(){
+var pTimeWorkers = google.visualization.arrayToDataTable([
+	['Hours', 'Number'],
+	['Full Time', 1173],
+	['Part Time', 2125]
+	
+]);
+
+var minWageHoursChart = new google.visualization.PieChart(document.getElementById('wageHoursDiv'));
+        minWageHoursChart.draw(pTimeWorkers, minWageHoursChartOptions);
+      }
+var minWageHoursChartOptions = {
+	title: 'Part-Time Vs. Full-Time',
+	fontName: 'Times New Roman',
+	colors:['#003900', '#D9D933'],
+	pieHole: 0.4,
+	
+};
 function chartLoaded() {
 	//Console log to show that googleLoaded is working
 	console.log("Google Loaded");
 
 	//Import fusion table
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1tLe8OdnLHPO6VSbL8T_lieu3X0csRHHAbCrp_T9h&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", jsonLoaded, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1tLe8OdnLHPO6VSbL8T_lieu3X0csRHHAbCrp_T9h&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsSex, "json");
 
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1fktE4abpAfHJzeXzKmOyWUY-ll1yJTtffYH5eoNK&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", infoLoaded, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1fktE4abpAfHJzeXzKmOyWUY-ll1yJTtffYH5eoNK&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", workforceSex, "json");
 	
 	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", minWageDemogs, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsAge, "json");
 
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsRace, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", workforceDemogsRace, "json");
 	
-	
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsHours, "json");
 }//end chartLoaded function                                                   
 
 function pageLoaded() {
