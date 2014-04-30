@@ -1,3 +1,9 @@
+/**
+ * @author Charles
+ */
+var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, ";
+var googleKey = "+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY"
+ 
 function fullData(wageData3){
 	var displayDataHeader3 = wageData3.columns;
 	console.log(displayDataHeader3);
@@ -6,28 +12,48 @@ function fullData(wageData3){
 	//replace default data with unemployment.rows data
 	          
 var options = {
-	title : 'TITLE',	
+	title : 'Minimum Wage Since 1967',	
 	fontName: 'Times New Roman',
 	backgroundColor: { strokeWidth:10, stroke: 'black'},
 	legend: {position: 'right', textStyle: {fontSize: 8}}
-	
-}
+      }
 	var table3 = new google.visualization.DataTable();    
-	table3.addColumn('string', displayDataHeader3[0]);
-	table3.addColumn('number', displayDataHeader3[1]);
-	table3.addColumn('number', displayDataHeader3[2]);
-	table3.addColumn('number', displayDataHeader3[3]);
-	table3.addColumn('number', displayDataHeader3[4]);
-	table3.addColumn('number', displayDataHeader3[5]);
+	table3.addColumn('string', displayDataHeader3[0]);//years
+	table3.addColumn('number', displayDataHeader3[1]);//Top 5
+	table3.addColumn('number', displayDataHeader3[2]);//Top 20
 	table3.addRows(wageData3.rows);                
 
+/*	var table5 = new google.visualization.DataTable();    
+	table5.addColumn('string', displayDataHeader3[0]);//years
+	table5.addColumn('number', displayDataHeader3[1]);//Top 5
+	table5.addColumn('number', displayDataHeader3[2]);//Top 20
+	table5.addColumn('number', displayDataHeader3[3]);//Mid 20
+	table5.addColumn('number', displayDataHeader3[4]);//low 20
+	table5.addColumn('number', displayDataHeader3[5]); //minWage
+	table5.addRows(wageData3.rows);
+	
 var minButton = document.getElementById('minWageComp');
 var allButton = document.getElementById('showAll');
 
+
 minButton.onclick = function(){
+	table3.removeColumn(4);
+	table3.removeColumn(3);
+	table3.removeColumn(2);
 	table3.removeColumn(1);
+	
 	wageGraph3.draw(table3, options);
+
+allButton.onclick = function(){
+	table5.removeColumn(4);
+	table5.removeColumn(2);
+	table5.removeColumn(1);
+	wageGraph3.draw(table5, options)
 }
+
+}
+
+
 
 /*	
 var button = document.getElementById('b1');
@@ -38,6 +64,7 @@ var button = document.getElementById('b1');
             button.disabled = false;
           });
 */
+
 	// Draw the linegraph in html div "graph div"
 
 	var wageGraph3 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
@@ -52,8 +79,20 @@ var button = document.getElementById('b1');
 };
 
 
+//build googleLoaded function
+//with Unemployment file imported
+function clickHandler(e){
+	console.log(e.target.id);
 
-   
+	//button recalls button Id 
+	var wageVLU = e.target.id;
+	
+	
+	//build query string from table ID; variable year; and key; init. unemploymentLoaded
+	$.get(tableID+wageVLU+googleKey, fullData, "json");
+	//isolated year from button id
+	//var wageVlu = myID.split("_")[1];
+}   
 /*function infoLoaded(wageData2){
 	var displayDataHeader2 = wageData2.columns;
 	console.log(displayDataHeader2);
@@ -250,16 +289,22 @@ function chartLoaded() {
 	//$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1tLe8OdnLHPO6VSbL8T_lieu3X0csRHHAbCrp_T9h&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsSex, "json");
 	wageDemogsSex();
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1fktE4abpAfHJzeXzKmOyWUY-ll1yJTtffYH5eoNK&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", workforceSex, "json");
+	workforceSex();
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
-	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsAge, "json");
+	wageDemogsAge();
 
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsRace, "json");
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", workforceDemogsRace, "json");
+	wageDemogsRace();
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1JIQJovyNLFL-UFk5RpuBz6U89Joplk-I9o5Y1a-a&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsHours, "json");
+	workforceDemogsRace();
+	
+	wageDemogsHours();
+	
+	//$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Middle20Percent+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
+	
+	//activate click handler on "click"
+$('.btn-default').on("click", clickHandler);
+
+$("#MinimumWage").click();
 }//end chartLoaded function                                                   
 
 function pageLoaded() {
