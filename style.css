@@ -2,7 +2,7 @@ body {
 }
 	div {
 		width: 70%;
-		float: center;
+		float: middle;
 		font:Times, serif;
 		
 	}
@@ -12,13 +12,30 @@ body {
 		font: bold 25px Times, serif
 	}
 	
+	.lineWrapper {
+		
+		outline: 5px solid black;
+		float: center;
+	}
+	
+	#lineGraphDiv {
+		width: 100%;
+		float: right;
+		
+	}
+	
 	.captionWrapper{
 		width: 70%;
+		float: top
 		margin-bottom:50px;
+	}
+	
+	.buttonCaption {
+		font: 10px Times;
+		float: top;
 	}
 	.captionDiv {
 		width: 60%;
-		float:right;
 		
 	}
 	p.caption {
