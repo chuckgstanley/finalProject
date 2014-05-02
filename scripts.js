@@ -15,8 +15,7 @@ var options = {
 	title : 'Minimum Wage Since 1967',
 	colors:['#6AD3D9', '#FC72F1'],
 	fontName: 'Times New Roman',
-	backgroundColor: { strokeWidth:10, stroke: 'black'},
-	legend: {position: 'right', textStyle: {fontSize: 8}}
+	legend: {position: 'left', textStyle: {fontSize: 8}}
       }
 	var table3 = new google.visualization.DataTable();    
 	table3.addColumn('string', displayDataHeader3[0]);//years
