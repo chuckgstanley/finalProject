@@ -1,0 +1,61 @@
+body {
+}
+	div {
+		width: 70%;
+		float: center;
+		font:Times, serif;
+		
+	}
+	.headlineDiv {
+		
+		
+		font: bold 25px Times, serif
+	}
+	
+	.captionWrapper{
+		width: 70%;
+		margin-bottom:50px;
+	}
+	.captionDiv {
+		width: 60%;
+		float:right;
+		
+	}
+	p.caption {
+		font: italic 10px Times, serif;
+	}
+		
+	p.text {
+		font: 15px Times, serif;
+		
+	}
+	.btn {
+		width: 100px;
+		font: 10px Times, serif;
+	}
+	
+	.donutWrapper {
+		width: 70%;
+	}
+	.donutDiv {
+		width: 45%;
+	}
+	#wfGenderDiv {
+		float: right;
+	}
+	
+	#wfRaceDiv{
+		float: right;
+		
+	}
+	
+	#mwAgeDiv{
+		float: right;
+	}
+
+
+	
+		
+		
+	
+	
