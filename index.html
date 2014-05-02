@@ -7,42 +7,94 @@
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<!--Bring in Json-->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<!--Add Google scripts-->
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<!--Bring in "scripts" file -->
-		<script src="scripts.js" type="text/javascript"></script>
-
+		
+		<link rel="stylesheet" href="style.css">
 
 	</head>
 	<body>
-		<h1>Minimum Wage Versus Median and Top Wages</h1>
-		
-		<div id = "lineGraphDiv"style="width:700px; height:450px":>1</div>
-		<div id = "GraphDescriptionDiv">All numbers in 2012 Dollars. Incomes are taken from average earnings of 
-			top, middle and lowest income quintiles, and top 5 percent of earners. Source: U.S. Department of Labor,
-			U.S. Census Bureau, U.S. Bureau of Labor Statistics.</div>
-		<div id = "buttonTitleDive">Click to Compare</div>
-	<div class="btn btn-default" id="MinimumWage">Minimum Wage</div>
-	<div class="btn btn-default"  id="Lowest20Percent">Lowest 20% of Earners</div>
-	<div class="btn btn-default"  id="Middle20Percent">Middle 20% of Earners</div>
-	<div class="btn btn-default"  id="Topp">Top 20% of Earners</div>
-	<div class="btn btn-default"  id="Top">Top 5% of Earners</div>
-	<!--divs for unemployment charts-->
-	<div id = "wageGraphDiv" class="donuts" style="width:200px; height:300px":></div>
-	
-	<div id = "wageGraphDiv2" class ="col-md-8 col-sm-8 col-xs-8":></div>
-	
-	<div id = "raceDiv" style="width:700px; height:450px":></div>
-	
-	<div id = "moreRaceDiv"style="width:700px; height:450px":><</div>
-	
-	<div id = "ageDiv" style="width:700px; height:450px;"></div>
-	
-	<div id = "wageHoursDiv"style="width:700px; height:450px":><</div>
-	
-	
 
+		<div class="container">
+			<h1>New York</h1>
+			
+			<div class="headlineDiv">The Battle Over Minimum Wage</div>
+			
+			
+			
+			<div class="textDiv"><p class="text">Text Goes Here</p></div>
+			<div id="lineGraphDiv">
+		
+			</div>
+			
+			<div id = "buttonTitleDiv">
+				Click to Compare
+			</div>
+			<div class = "captionWrapper">
+			<div class="btn btn-default" id="MinimumWage">
+				Minimum Wage
+			</div>
+			<!--
+			<div class="btn btn-default"  id="Lowest20Percent">
+				Lowest 20% of Earners
+				
+			</div>-->
+			<div class="btn btn-default"  id="Middle20Percent">
+				Middle 20% of Earners
+			</div>
+			<div class="btn btn-default"  id="Topp">
+				Top 20% of Earners
+			</div>
+			
+			<div class = "captionDiv">
+				<p class="caption">All numbers in 2012 Dollars. Incomes are taken from average earnings of
+				top, middle and lowest income quintiles, and top 5 percent of earners. Source: U.S. Department of Labor,
+				U.S. Census Bureau, U.S. Bureau of Labor Statistics.</p>
+				</div>
+			</div>
+			
+			<div class="textDiv"><p class="text">More Text will go here. It will be so great.
+				</p>
+			</div>
+				<!--divs for unemployment charts-->
+				<div class="donutWrapper">
+				<div id = "wfGenderDiv" class="donutDiv":></div>
+				
+				<div id = "mwGenderDiv" class="donutDiv":></div>
+				</div>
+				
+				<div class="textDiv"><p class="text">I'm going to add even more text here. That's right,
+					I'm getting crazy.</p>
+				</div>
+				
+				<div class = "donutWrapper"></di>
+				<div id = "wfRaceDiv" class="donutDiv":></div>
+				
+				<div id = "mwraceDiv" class="donutDiv":></div>
+				</div>
+				
+				<div class="textDiv"><p class="text">Still more text. This is getting ridiculous!</p>
+				</div>
+				
+				
+				<div class = "donutWrapper"></di>
+				<div id = "mwAgeDiv" class="donutDiv":></div>
+				
+				<div id = "wageHoursDiv" class="donutDiv":>
+				</div>
+				
+				<div class="textDiv"><p class="text">This will be the last graph.</p>
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<!--jquery-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!--Add Google scripts-->
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<!-- Latest compiled and minified JavaScript for bootstrap-->
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<!--Custom scripts-->
+		<script src="scripts.js" type="text/javascript"></script>
 	</body>
 </html>
 
