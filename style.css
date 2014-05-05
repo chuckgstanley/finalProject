@@ -1,9 +1,10 @@
 body {
 }
 	div {
-		width: 70%;
+		width: 75%;
 		float: middle;
 		font:Times, serif;
+		margin: bottom:50px;
 		
 	}
 	.headlineDiv {
@@ -14,7 +15,7 @@ body {
 	
 	.lineWrapper {
 		
-		outline: 5px solid black;
+		outline: 2px solid black;
 		float: center;
 	}
 	
