@@ -3,27 +3,36 @@ body {
 	div {
 		
 		font:Times, serif;
-		margin-bottom:25px;
+		/*margin-bottom:25px;*/
 		
 	}
-	
+	.row {
+		margin-left:auto;
+		margin-right:auto;
+
+	}
 	.headlineDiv {
 		
 		
 		font: bold 25px Times, serif;
 		margin-bottom: 25px;
+		margin-top: 25px;
 	}
 	
+	.textDiv {
+		margin-bottom: 25px;
+	}
 	.lineWrapper {
 		
 	
 		outline: 2px solid black;
 		float: center;
+		margin-bottom: 25px;
 	}
 	
 	#lineGraphDiv {
-		width: 100%;
-		float: right;
+		height: 350px;
+		
 		margin-bottom: 0px;
 	}
 	
@@ -31,10 +40,6 @@ body {
 		width: 70%;
 		float: top
 		margin-bottom:50px;
-	}
-	
-	.buttonCaption{
-		font: bold 15px Times;
 	}
 	
 	.buttonCaption {
@@ -59,24 +64,11 @@ body {
 		font: 10px Times, serif;
 	}
 	
-	.donutWrapper {
-		width: 70%;
-	}
-	.donutDiv {
-		width: 45%;
-	}
-	#wfGenderDiv {
-		float: right;
+	.donutDiv{
+		height:200px;
 	}
 	
-	#wfRaceDiv{
-		float: right;
-		
-	}
-	
-	#mwAgeDiv{
-		float: right;
-	}
+
 
 
 	
