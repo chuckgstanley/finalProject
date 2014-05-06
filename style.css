@@ -1,20 +1,22 @@
 body {
 }
 	div {
-		width: 75%;
-		float: middle;
+		
 		font:Times, serif;
-		margin: bottom:50px;
+		margin-bottom:25px;
 		
 	}
+	
 	.headlineDiv {
 		
 		
-		font: bold 25px Times, serif
+		font: bold 25px Times, serif;
+		margin-bottom: 25px;
 	}
 	
 	.lineWrapper {
 		
+	
 		outline: 2px solid black;
 		float: center;
 	}
@@ -22,7 +24,7 @@ body {
 	#lineGraphDiv {
 		width: 100%;
 		float: right;
-		
+		margin-bottom: 0px;
 	}
 	
 	.captionWrapper{
@@ -31,12 +33,17 @@ body {
 		margin-bottom:50px;
 	}
 	
+	.buttonCaption{
+		font: bold 15px Times;
+	}
+	
 	.buttonCaption {
 		font: 10px Times;
 		float: top;
 	}
 	.captionDiv {
 		width: 60%;
+		
 		
 	}
 	p.caption {
