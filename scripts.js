@@ -177,7 +177,7 @@ var ageChart = new google.visualization.PieChart(document.getElementById("mwAgeD
 var ageChartOptions = {
 	title: 'Minimum Wage Earners by Age',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9', '#FC72F1'],
+	colors:['#9DDEFA', '#43B1E0', 'EB36D3'],
 	pieHole: 0.4,
 	
 };
@@ -195,7 +195,7 @@ var sexChart = new google.visualization.PieChart(document.getElementById('mwGend
 var sexChartOptions = {
 	title: 'Minimum Wage Earners by Gender',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9'],
+	colors:['#43B1E0', '#EB36D3'],
 	pieHole: 0.4,
 	
 };
@@ -214,7 +214,7 @@ var workforceSexChart = new google.visualization.PieChart(document.getElementByI
 var workforceSexChartOptions = {
 	title: 'U.S. Workforce by Gender',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9'],
+	colors:['#43B1E0', '#EB36D3'],
 	pieHole: 0.4,
 	
 };
@@ -234,7 +234,7 @@ var minWageRaceChart = new google.visualization.PieChart(document.getElementById
 var minWageRaceChartOptions = {
 	title: 'Minimum Wage Earners by Race',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9', '#FC72F1', '#FF5757'],
+	colors:['EB36D3', '#43B1E0','#B2ED53', '#FF5757'],
 	pieHole: 0.4,
 	
 };
@@ -254,7 +254,7 @@ var fullWorkforceRaceChart = new google.visualization.PieChart(document.getEleme
 var fullWorkforceRaceChartOptions = {
 	title: 'U.S. Workforce by Race',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9', '#FC72F1', '#FF5757'],
+	colors:['EB36D3', '#43B1E0','#B2ED53', '#FF5757'],
 	pieHole: 0.4,
 	
 };
@@ -273,7 +273,7 @@ var minWageHoursChart = new google.visualization.PieChart(document.getElementByI
 var minWageHoursChartOptions = {
 	title: 'Part-Time Vs. Full-Time',
 	fontName: 'Times New Roman',
-	colors:['#DAFC5D', '#6AD3D9'],
+	colors:['#43B1E0', 'EB36D3'],
 	pieHole: 0.4,
 	
 };
