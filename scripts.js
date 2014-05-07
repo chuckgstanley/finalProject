@@ -1,19 +1,43 @@
 /**
  * @author Charles
  */
+
 var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, ";
 var googleKey = "+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY"
  
-function fullData(wageData3){
+//This function builds the linegraph from minimum wage and income data 
+
+function minWage (justMinWage){
+	var displayDataHeader1 = justMinWage.columns;
+	
+	          
+var options = {
+	title : 'Minimum Wage Since 1967',
+	colors:['#FC72F1'],
+	fontName: 'Times New Roman',
+	legend: {position: 'right', textStyle: {fontSize: 8}}
+      }
+	var table1 = new google.visualization.DataTable();    
+	table1.addColumn('string', displayDataHeader1[0]);//years
+	table1.addColumn('number', displayDataHeader1[1]);
+	table1.addRows(justMinWage.rows);
+	
+		var wageGraph1 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
+	wageGraph1.draw(table1, options)
+	
+
+};//End minWage function
+
+function lineChartData(wageData3){
 	var displayDataHeader3 = wageData3.columns;
-	console.log(displayDataHeader3);
+	//console.log(displayDataHeader3);
 	
 	//insert data table template from fusion tables
 	//replace default data with unemployment.rows data
 	          
 var options = {
 	title : 'Minimum Wage Since 1967',
-	colors:['#6AD3D9', '#FC72F1'],
+	colors:['#FC72F1', '#6AD3D9'],
 	fontName: 'Times New Roman',
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
@@ -23,64 +47,16 @@ var options = {
 	table3.addColumn('number', displayDataHeader3[2]);//Top 20
 	table3.addRows(wageData3.rows);                
 
-/*	var table5 = new google.visualization.DataTable();    
-	table5.addColumn('string', displayDataHeader3[0]);//years
-	table5.addColumn('number', displayDataHeader3[1]);//Top 5
-	table5.addColumn('number', displayDataHeader3[2]);//Top 20
-	table5.addColumn('number', displayDataHeader3[3]);//Mid 20
-	table5.addColumn('number', displayDataHeader3[4]);//low 20
-	table5.addColumn('number', displayDataHeader3[5]); //minWage
-	table5.addRows(wageData3.rows);
-	
-var minButton = document.getElementById('minWageComp');
-var allButton = document.getElementById('showAll');
 
-
-minButton.onclick = function(){
-	table3.removeColumn(4);
-	table3.removeColumn(3);
-	table3.removeColumn(2);
-	table3.removeColumn(1);
-	
-	wageGraph3.draw(table3, options);
-
-allButton.onclick = function(){
-	table5.removeColumn(4);
-	table5.removeColumn(2);
-	table5.removeColumn(1);
-	wageGraph3.draw(table5, options)
-}
-
-}
-
-
-
-/*	
-var button = document.getElementById('b1');
-	// Disabling the button while the chart is drawing.
-      button.disabled = true;
-      google.visualization.events.addListener(chart, 'ready',
-          function() {
-            button.disabled = false;
-          });
-*/
-
-	// Draw the linegraph in html div "graph div"
-
+	//Draw Chart	
 	var wageGraph3 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
 	wageGraph3.draw(table3, options)
 	
-	
-//build googleLoaded function
-//with Unemployment file imported
-//end of infoLoaded
+
+}; //End of lineChartData function
 
 
-};
-
-
-//build googleLoaded function
-//with Unemployment file imported
+//Click Handler for unemployment numbers
 function clickHandler(e){
 	console.log(e.target.id);
 
@@ -88,78 +64,15 @@ function clickHandler(e){
 	var wageVLU = e.target.id;
 	
 	
-	//build query string from table ID; variable year; and key; init. unemploymentLoaded
-	$.get(tableID+wageVLU+googleKey, fullData, "json");
+	//build query string from table ID; variable year; and key; init. lineChartData function
+	$.get(tableID+wageVLU+googleKey, lineChartData, "json");
 	//isolated year from button id
 	//var wageVlu = myID.split("_")[1];
-}   
-/*function infoLoaded(wageData2){
-	var displayDataHeader2 = wageData2.columns;
-	console.log(displayDataHeader2);
-	
-	//insert data table template from fusion tables
-	//replace default data with unemployment.rows data
-	
-	var table2 = new google.visualization.DataTable();    
-	table2.addColumn('string', displayDataHeader2[0]);
-	table2.addColumn('number', displayDataHeader2[1]);
-	table2.addColumn('number', displayDataHeader2[2]);
-	table2.addColumn('number', displayDataHeader2[3]);
-	table2.addRows(wageData2.rows);                
-	
-	//add title
-
-	var options = {
-	title : 'TITLE',	
-	isStacked: true,
-	colors:['#7CCF7C', '#2B492B', '#0D160D']
-	}
-
-	// Draw the linegraph in html div "graph div"
-
-	var wageGraph2 = new google.visualization.ColumnChart(document.getElementById("wageGraphDiv2"));
-	wageGraph2.draw(table2, options)
-//build googleLoaded function
-//with Unemployment file imported
-
-}; //end of infoLoaded
+}//End of Click Handler
 
 
 
-
-
-
-function jsonLoaded(wageData) {
-	//Log Unemployment numbers to demonstrate jsonloaded is working
-	console.log(wageData);
-	// Create Array to hold data, starting with "date" and "value"
-	// headers
-
-	var displayDataHeader = wageData.columns;
-	console.log(displayDataHeader);
-	
-	//insert data table template from fusion tables
-	//replace default data with unemployment.rows data
-	
-	var table = new google.visualization.DataTable();    
-	table.addColumn('string', displayDataHeader[0]);
-	table.addColumn('number', displayDataHeader[1]);
-	table.addColumn('number', displayDataHeader[3]);
-
-	table.addRows(wageData.rows);                
-	
-	//add title
-
-
-
-	// Draw the linegraph in html div "graph div"
-
-	var wageGraph = new google.visualization.LineChart(document.getElementById("wageGraphDiv"));
-	wageGraph.draw(table)
-	
-
-};//end of jsonLoaded function
-*/
+//Build and push minwage age donut chart.
 function wageDemogsAge(){
 //source:http://www.bls.gov/cps/minwage2013.pdf obtained 4/29
 var minWageAge = google.visualization.arrayToDataTable([
@@ -180,7 +93,9 @@ var ageChartOptions = {
 	colors:['#9DDEFA', '#43B1E0', 'EB36D3'],
 	pieHole: 0.4,
 	
-};
+};//end wageDemogsAge chart
+
+//build and push donut chart for minimumwage gender numbers.
 function wageDemogsSex(){
 var minWageSex = google.visualization.arrayToDataTable([
 	['Sex', 'Minimum Wage Earners'],
@@ -198,8 +113,9 @@ var sexChartOptions = {
 	colors:['#43B1E0', '#EB36D3'],
 	pieHole: 0.4,
 	
-};
+};//end wageDemogsSex function
 
+//donut chart for U.S. workforce gender numbers.
 function workforceSex(){
 var fullWorkforceSex = google.visualization.arrayToDataTable([
 	['Sex', 'In Workforce'],
@@ -217,7 +133,9 @@ var workforceSexChartOptions = {
 	colors:['#43B1E0', '#EB36D3'],
 	pieHole: 0.4,
 	
-};
+};//End workforceSex function
+
+//build chart for minwage earner race demographics.
 function wageDemogsRace(){
 var minWageRace = google.visualization.arrayToDataTable([
 		['Race', 'Minimum Wage Earners'],
@@ -237,8 +155,9 @@ var minWageRaceChartOptions = {
 	colors:['EB36D3', '#43B1E0','#B2ED53', '#FF5757'],
 	pieHole: 0.4,
 	
-};
+};//End wageDemogsRace function
 
+//build donut chart for U.S. workforce race demographics.
 function workforceDemogsRace(){
 var fullWorkforceRace = google.visualization.arrayToDataTable([
 		['Race', 'U.S. Workforce by Race'],
@@ -257,8 +176,10 @@ var fullWorkforceRaceChartOptions = {
 	colors:['EB36D3', '#43B1E0','#B2ED53', '#FF5757'],
 	pieHole: 0.4,
 	
-};
+};//end workforceDemogsRace function
 
+
+//donut graph for full time and part time minwage earners.
 function wageDemogsHours(){
 var pTimeWorkers = google.visualization.arrayToDataTable([
 	['Hours', 'Number'],
@@ -276,16 +197,15 @@ var minWageHoursChartOptions = {
 	colors:['#43B1E0', 'EB36D3'],
 	pieHole: 0.4,
 	
-};
+};//End wageDemogsHours function
 
 
 
-
+//init donut graphs and min wage chart
 function chartLoaded() {
-	//Console log to show that googleLoaded is working
-	console.log("Google Loaded");
+	
 
-	//Import fusion table
+	//Import fusion table median wage v minwage only
 	//$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+*+FROM+1tLe8OdnLHPO6VSbL8T_lieu3X0csRHHAbCrp_T9h&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", wageDemogsSex, "json");
 	wageDemogsSex();
 	
@@ -299,12 +219,14 @@ function chartLoaded() {
 	
 	wageDemogsHours();
 	
-	//$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Middle20Percent+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", fullData, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", minWage, "json");
 	
 	//activate click handler on "click"
 $('.btn-default').on("click", clickHandler);
 
-$("#MinimumWage").click();
+
+//Auto click MinimumWage
+//$("#MinimumWage").click();
 }//end chartLoaded function                                                   
 
 function pageLoaded() {
