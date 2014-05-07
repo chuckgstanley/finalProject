@@ -4,16 +4,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Minimum Wage Over Time</title>
-		<!-- Latest compiled and minified CSS -->
+		<!-- Bootstrap Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<!--Bring in Json-->
 
+		<!--My Stylesheet-->
 		<link rel="stylesheet" href="style.css">
 
 	</head>
 	<body>
+		<!--NYMag Masthead-->
 		<a href="default.asp"><img src="nymag.png" width="600" height="80"></a></p>
-
+		
+		<!--Bootstrap Navbar and links to other stories in series-->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -34,7 +36,8 @@
 							<a href="http://www.columbia.edu/~maa2245/map/index.html">Demographic Breakdown</a>
 						</li>
 						<li class="active">
-							<a href="http://localh.com">Comparing Across Cities</a>
+							<a href="http://www.columbia.edu/~snh2127/FinalProject/index.html"
+>Comparing Across Cities</a>
 						</li>
 						<li class="active">
 							<a href="http://localh.com">Change Over Time</a>
@@ -46,17 +49,20 @@
 				</ul>
 			</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
-		</nav>
+		</nav><!--End of Navbar-->
 
+		<!--Container and Row classes from Bootstrap to set grid layout-->
 		<div class="container">
 		<div class="row">
+			<!--Empy Column-->
 			<div class = "col-md-2">
-			</div>
+			</div><!--End of Empty Column-->
+			<!-- Content div sets display size to 10 columns-->
 			<div class ="col-md-10">
 			<div class="headlineDiv">
 				The Battle Over Minimum Wage
 
-			</div>
+			</div><!--End headline div-->
 
 			<div class="textDiv">
 				<p class="text">
@@ -82,40 +88,46 @@
 					of 25, and two thirds of them are women. When it comes to the macro-effects of
 					the minimum wage as a policy issue, the math becomes less clear.
 				</p>
-			</div>
+			</div> <!--End Text Div-->
 
+			<!--Wrapper for lineGraph, Caption, Button ID and Buttons-->
+			<div id="divdiv"></div>
 			<div class="lineWrapper" class = "col-md-12">
+				<!--MinWage and Income info pushed to line chart-->
 				<div id="lineGraphDiv" class = "col-md-12">
 
-				</div>
+				</div><!--End LineGraphDiv-->
 
 				<div id = "buttonTitleDiv" class="buttonCaption">
 					Click to Compare
-				</div>
-				<div class = "captionWrapper">
+				</div><!--End buttonTitleDiv-->
+				<!--Wrapper for buttons-->
+				<div class = "buttonWrapper">
 					<div class="btn btn-default" id="MinimumWage">
 						Minimum Wage
-					</div>
-					<!--
+					</div><!--end Button->
+					<!--Lowest quintile earners disabled
 					<div class="btn btn-default"  id="Lowest20Percent">
 					Lowest 20% of Earners
 
 					</div>-->
+					
 					<div class="btn btn-default"  id="Middle20Percent">
 						Middle 20% of Earners
-					</div>
-					<div class="btn btn-default"  id="Topp">
+					</div><!--End button-->	
+	
+					<div class="btn btn-default"  id="Top20Percent">
 						Top 20% of Earners
-					</div>
-				</div>
+					</div><!--End Button-->
+				</div> <!--End Button wrapper-->
 				<div class = "captionDiv">
 					<p class="caption">
 						All numbers in 2012 Dollars. Minimum wage income is based on 52 40-hour work weeks,
 						middle and top incomes are taken from average incomes of the middle and quintile earners. Source: U.S. Department of Labor,
 						U.S. Census Bureau, U.S. Bureau of Labor Statistics.
 					</p>
-				</div>
-			</div>
+				</div><!--End Caption Div-->
+			</div><!--End LineGraph Wrapper-->
 
 			<div class="textDiv">
 				<p class="text">
@@ -130,24 +142,20 @@
 					economic indicators that economists argue may be more directly affected by raises to
 					the minimum wage.
 				</p>
-			</div>
-			<!--divs for unemployment charts-->
+			</div><!--End Text Div-->
+			<!--div paired gender donut charts-->
 			<div class="row">
 				<div id = "wfGenderDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 				<div id = "mwGenderDiv" class="donutDiv col-md-6 col-sm-12":></div>
-			</div>
+			</div><!--End gender chart div-->
 
 			<div class="textDiv">
-				
-				
-				<div class="textDiv">
 					<p class="text">
 						It can't help that adding new research to the existing literature about this topic 
 						is akin to volunteering for a level of public criticism, second-guessing and skepticism, from enlightened amateurs, that few economists ever get to experience.
 					</p>
-
-
+					
 						<p class="text">
 							"I normally work on far less controvercial issues like charitable giving," says Jonathan Meer, an assistant professor of economics at Texas A&M who co-authored
 							a study last year on the negative impact of high minimum wages on employment growth. He says intense feelings about the minimum wage as a political issue make
@@ -160,15 +168,16 @@
 								wage studies even more concisely. "This is a hornet's nest," he says.
 							</p>
 
-						</div>
+						</div><!--End Text Div-->
 
+						<!--Div for paired race donut charts-->
 						<div class = "row">
 							
 							<div id = "wfRaceDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 						
 							<div id = "mwraceDiv" class="donutDiv col-md-6 col-sm-12":></div>
-						</div>
+						</div> <!--End of race donut charts-->
 					
 						<div class="textDiv">
 
@@ -219,12 +228,13 @@
 														</p>
 
 													</div>
-
+													
+													<!--Div for paired age and hour donut charts-->
 													<div class = "row">
 														<div id = "mwAgeDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 														<div id = "wageHoursDiv" class="donutDiv col-md-6 col-sm-12":></div>
-													</div>
+													</div><!--End age and hour charts-->
 
 														<div class="textDiv">
 															<p class="text">
@@ -260,12 +270,11 @@
 																				to the point that it's now a sort of holy war. "Reasonable people can disagree on the trade-offs."
 																			</p>
 																	
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
+																		</div><!--End Text Div-->
+																
+															</div><!--End Content Div-->
+														</div><!--End Row-->
+													</div> <!--End Container-->
 															<!--jquery-->
 															<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 															<!--Add Google scripts-->
