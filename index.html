@@ -40,7 +40,7 @@
 >Comparing Across Cities</a>
 						</li>
 						<li class="active">
-							<a href="http://localh.com">Change Over Time</a>
+							<a href="http://www.columbia.edu/~plp2112/minwage.html">Change Over Time</a>
 						</li>
 
 				</div>
@@ -89,10 +89,10 @@
 					the minimum wage as a policy issue, the math becomes less clear.
 				</p>
 			</div> <!--End Text Div-->
-
+			
+			<div id="mobileChart" class="col-md-12 visible-xs"></div>
 			<!--Wrapper for lineGraph, Caption, Button ID and Buttons-->
-			<div id="divdiv"></div>
-			<div class="lineWrapper" class = "col-md-12">
+			<div class="lineWrapper col-md-12 hidden-xs">
 				<!--MinWage and Income info pushed to line chart-->
 				<div id="lineGraphDiv" class = "col-md-12">
 
@@ -145,11 +145,17 @@
 			</div><!--End Text Div-->
 			<!--div paired gender donut charts-->
 			<div class="row">
+				<div class= "title">Women Make Up Half of the Workforce But Two Thirds of Minimum Wage Earners.</div>
 				<div id = "wfGenderDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 				<div id = "mwGenderDiv" class="donutDiv col-md-6 col-sm-12":></div>
 			</div><!--End gender chart div-->
 
+			<div class = "captionDiv">
+			<p class="caption">
+			Source: U.S. Department of Labor.
+			</p>
+													</div>
 			<div class="textDiv">
 					<p class="text">
 						It can't help that adding new research to the existing literature about this topic 
@@ -168,18 +174,17 @@
 								wage studies even more concisely. "This is a hornet's nest," he says.
 							</p>
 
-						</div><!--End Text Div-->
-
-						<!--Div for paired race donut charts-->
+				
+						<!--Div for paired race donut charts
 						<div class = "row">
 							
 							<div id = "wfRaceDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 						
 							<div id = "mwraceDiv" class="donutDiv col-md-6 col-sm-12":></div>
-						</div> <!--End of race donut charts-->
+						</div> <!--End of race donut charts
 					
-						<div class="textDiv">
+						<div class="textDiv">-->
 
 								<p class="text">
 									Taken alone, Aarinson and Meer's recent studies seem to tell starkly divergent stories about the potential fallout of a hike to the minimum wage.
@@ -231,11 +236,16 @@
 													
 													<!--Div for paired age and hour donut charts-->
 													<div class = "row">
+														<div class= "title">About Half of Minimum Wage Earners are Over 25. One Third Are Part-Time Employees.</div> 
 														<div id = "mwAgeDiv" class="donutDiv col-md-6 col-sm-12":></div>
 
 														<div id = "wageHoursDiv" class="donutDiv col-md-6 col-sm-12":></div>
 													</div><!--End age and hour charts-->
-
+													<div class = "captionDiv">
+													<p class="caption">
+													Source: U.S. Department of Labor.
+													</p>
+													</div>
 														<div class="textDiv">
 															<p class="text">
 																"It's a very small fraction of households," Aarinson says. "But the amount they are spending on these cars is very high."
@@ -285,4 +295,3 @@
 															<script src="scripts.js" type="text/javascript"></script>
 	</body>
 </html>
-
