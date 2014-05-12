@@ -12,8 +12,8 @@ function minWage (justMinWage){
 	
 	          
 var options = {
-	title : 'Minimum Wage Since 1967',
-	colors:['#FC72F1'],
+	title : 'After Falling Drastically in the 1980s, the Minimum Wage Never Regained its pre-1982 Value.',
+	colors:['#EB36D3'],
 	fontName: 'Times New Roman',
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
@@ -28,6 +28,33 @@ var options = {
 
 };//End minWage function
 
+//Mobilefunction
+function mobileChartData(mobileData){
+	var displayDataHeader2 = mobileData.columns;
+	
+	
+	          
+var options = {
+	title : 'Minimum Wage Loses Value, While Incomes for Top and Middle Earners Grow.',
+	colors:['#EB36D3', '#B2ED53', '#43B1E0'],
+	fontName: 'Times New Roman',
+	legend: {position: 'right', textStyle: {fontSize: 8}}
+      }
+	var table2 = new google.visualization.DataTable();    
+	table2.addColumn('string', displayDataHeader2[0]);//years
+	table2.addColumn('number', displayDataHeader2[1]);//Top 5
+	table2.addColumn('number', displayDataHeader2[2]);//Top 20
+	table2.addColumn('number', displayDataHeader2[3]);
+	table2.addRows(mobileData.rows);                
+
+
+	//Draw Chart	
+	var wageGraph2 = new google.visualization.LineChart(document.getElementById("mobileChart"));
+	wageGraph2.draw(table2, options)
+	
+
+}; //End of lineChartData function
+
 function lineChartData(wageData3){
 	var displayDataHeader3 = wageData3.columns;
 	//console.log(displayDataHeader3);
@@ -36,8 +63,8 @@ function lineChartData(wageData3){
 	//replace default data with unemployment.rows data
 	          
 var options = {
-	title : 'Minimum Wage Since 1967',
-	colors:['#FC72F1', '#6AD3D9'],
+	title : 'Minimum Wage Incomes Have Lost Value Since 1967, While Incomes for Top and Middle Earners Have Increased.',
+	colors:['#EB36D3', '#43B1E0'],
 	fontName: 'Times New Roman',
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
@@ -213,13 +240,15 @@ function chartLoaded() {
 	
 	wageDemogsAge();
 
-	wageDemogsRace();
+	//wageDemogsRace();
 	
-	workforceDemogsRace();
+	//workforceDemogsRace();
 	
 	wageDemogsHours();
 	
 	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", minWage, "json");
+	
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Middle20Percent, Top20Percent+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", mobileChartData, "json");
 	
 	//activate click handler on "click"
 $('.btn-default').on("click", clickHandler);
