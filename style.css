@@ -35,7 +35,9 @@ body {
 		
 		margin-bottom: 0px;
 	}
-	
+	#mobileChart{
+		height:350px;
+	}
 	.captionWrapper{
 		width: 70%;
 		float: top
@@ -48,6 +50,7 @@ body {
 	}
 	.captionDiv {
 		width: 60%;
+		margin-bottom:25px;
 		
 		
 	}
@@ -59,6 +62,11 @@ body {
 		font: 15px Times, serif;
 		
 	}
+	.title {
+		font: bold 15px Times,serif;
+		text-align: center;
+	}
+	
 	.btn {
 		width: 100px;
 		font: 10px Times, serif;
@@ -67,6 +75,7 @@ body {
 	.donutDiv{
 		height:200px;
 	}
+	
 	
 
 
