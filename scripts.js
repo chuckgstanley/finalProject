@@ -2,7 +2,7 @@
  * @author Charles
  */
 
-var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, Annotation, MinimumWage";
+var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Annotation,";
 var googleKey = "+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY"
  
 //This function builds the linegraph from minimum wage and income data 
@@ -53,6 +53,7 @@ var options = {
 	colors:['#EB36D3', '#B2ED53', '#43B1E0'],
 	vAxis: {format:'$###,###,###.00'}, // Money format
 	fontName: 'Times New Roman',
+	
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
 	var table2 = new google.visualization.DataTable();    
@@ -60,7 +61,6 @@ var options = {
 	table2.addColumn('number', displayDataHeader2[1]);//Top 5
 	table2.addColumn('number', displayDataHeader2[2]);//Top 20
 	table2.addColumn('number', displayDataHeader2[3]);
-	table2.addColumn({type: 'string', role: 'annotation'});
 	table2.addRows(mobileData.rows);                
 
  var formatter = new google.visualization.NumberFormat({prefix: "$", negativeColor: 'red', negativeParens: true});
@@ -85,13 +85,20 @@ var options = {
 	colors:['#EB36D3', '#43B1E0'],
 	vAxis: {format:'$###,###,###.00'}, // Money format
 	fontName: 'Times New Roman',
+	annotations: {
+  		textStyle: {
+  		color: 'black',     // The color of the text.
+		fontSize: 8,
+		}
+	},
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
 	var table3 = new google.visualization.DataTable();    
 	table3.addColumn('string', displayDataHeader3[0]);//years
 	table3.addColumn('number', displayDataHeader3[1]);//Top 5
-	table3.addColumn('number', displayDataHeader3[2]);//Top 20
 	table3.addColumn({type: 'string', role: 'annotation'});
+	table3.addColumn('number', displayDataHeader3[2]);//Top 20
+	
 	table3.addRows(wageData3.rows);                
 
  var formatter = new google.visualization.NumberFormat({prefix: "$", negativeColor: 'red', negativeParens: true});
