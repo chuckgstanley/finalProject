@@ -2,7 +2,7 @@
  * @author Charles
  */
 
-var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, ";
+var tableID = "https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, Annotation, MinimumWage";
 var googleKey = "+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY"
  
 //This function builds the linegraph from minimum wage and income data 
@@ -14,14 +14,28 @@ function minWage (justMinWage){
 var options = {
 	title : 'After Falling Drastically in the 1980s, the Minimum Wage Never Regained its pre-1982 Value.',
 	colors:['#EB36D3'],
+	annotations: {
+  	textStyle: {
+  	color: 'black',     // The color of the text.
+	fontSize: 8,
+	}
+},
 	fontName: 'Times New Roman',
+	vAxis: {format:'$###,###,###.00'}, // Money format
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
+      
+      
+      
 	var table1 = new google.visualization.DataTable();    
 	table1.addColumn('string', displayDataHeader1[0]);//years
 	table1.addColumn('number', displayDataHeader1[1]);
+	table1.addColumn({type: 'string', role: 'annotation'});
 	table1.addRows(justMinWage.rows);
 	
+	 var formatter = new google.visualization.NumberFormat({prefix: "$", negativeColor: 'red', negativeParens: true});
+  formatter.format(table1, 1); // Apply formatter to second column
+    
 		var wageGraph1 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
 	wageGraph1.draw(table1, options)
 	
@@ -37,6 +51,7 @@ function mobileChartData(mobileData){
 var options = {
 	title : 'Minimum Wage Loses Value, While Incomes for Top and Middle Earners Grow.',
 	colors:['#EB36D3', '#B2ED53', '#43B1E0'],
+	vAxis: {format:'$###,###,###.00'}, // Money format
 	fontName: 'Times New Roman',
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
@@ -45,10 +60,13 @@ var options = {
 	table2.addColumn('number', displayDataHeader2[1]);//Top 5
 	table2.addColumn('number', displayDataHeader2[2]);//Top 20
 	table2.addColumn('number', displayDataHeader2[3]);
+	table2.addColumn({type: 'string', role: 'annotation'});
 	table2.addRows(mobileData.rows);                
 
-
-	//Draw Chart	
+ var formatter = new google.visualization.NumberFormat({prefix: "$", negativeColor: 'red', negativeParens: true});
+  formatter.format(table2, 1); // Apply formatter to second column
+	 formatter.format(table2, 2);
+	  formatter.format(table2, 3);	
 	var wageGraph2 = new google.visualization.LineChart(document.getElementById("mobileChart"));
 	wageGraph2.draw(table2, options)
 	
@@ -65,6 +83,7 @@ function lineChartData(wageData3){
 var options = {
 	title : 'Minimum Wage Incomes Have Lost Value Since 1967, While Incomes for Top and Middle Earners Have Increased.',
 	colors:['#EB36D3', '#43B1E0'],
+	vAxis: {format:'$###,###,###.00'}, // Money format
 	fontName: 'Times New Roman',
 	legend: {position: 'right', textStyle: {fontSize: 8}}
       }
@@ -72,9 +91,13 @@ var options = {
 	table3.addColumn('string', displayDataHeader3[0]);//years
 	table3.addColumn('number', displayDataHeader3[1]);//Top 5
 	table3.addColumn('number', displayDataHeader3[2]);//Top 20
+	table3.addColumn({type: 'string', role: 'annotation'});
 	table3.addRows(wageData3.rows);                
 
-
+ var formatter = new google.visualization.NumberFormat({prefix: "$", negativeColor: 'red', negativeParens: true});
+  formatter.format(table3, 1); // Apply formatter to second column
+	 formatter.format(table3, 2);
+	  
 	//Draw Chart	
 	var wageGraph3 = new google.visualization.LineChart(document.getElementById("lineGraphDiv"));
 	wageGraph3.draw(table3, options)
@@ -246,7 +269,7 @@ function chartLoaded() {
 	
 	wageDemogsHours();
 	
-	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", minWage, "json");
+	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Annotation+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", minWage, "json");
 	
 	$.get("https://www.googleapis.com/fusiontables/v1/query?sql=SELECT+Year, MinimumWage, Middle20Percent, Top20Percent+FROM+18lKX6m3lUbcN8FGb-MacTa0cyAxeB7m0MayAF0Qa&key=AIzaSyALhD6XEx_Ge1QTHvfmlwy5e_9_p--vouY", mobileChartData, "json");
 	
